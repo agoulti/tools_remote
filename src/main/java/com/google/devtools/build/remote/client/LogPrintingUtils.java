@@ -31,7 +31,7 @@ import io.grpc.Status.Code;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /** Methods for printing log files. */
@@ -107,7 +107,7 @@ public class LogPrintingUtils {
    * (earliest first).
    */
   private static void printEntriesGroupedByAction(PrintLogCommand options) throws IOException {
-    Map<String, Multiset<LogEntry>> actionMap = new HashMap<>();
+    Map<String, Multiset<LogEntry>> actionMap = new LinkedHashMap<>();
     int numSkipped = 0;
     try (InputStream in = new FileInputStream(options.file)) {
       LogEntry entry;
